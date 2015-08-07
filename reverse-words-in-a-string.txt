@@ -1,0 +1,31 @@
+class Solution {
+public:
+    void reverseWords(string &s) {
+		string temp;
+		string res;
+		if (s.empty()) return;
+
+		temp.clear();
+		res.clear(); 
+
+		for (string::iterator it = s.begin(); it != s.end(); it++)
+		{
+			//temp.clear();
+			if(char(*it) != ' ')
+			{
+				temp.push_back(char(*it));
+			}
+			if (char(*it) == ' ' && !temp.empty())
+			{
+				res = temp + " " + res;
+				temp.clear();
+			}
+		}
+		if (!temp.empty())
+		{
+			res = temp + " " + res;
+		}
+		s = res;
+		s = s.substr(0,s.size()-1);
+    }
+};
